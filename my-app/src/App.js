@@ -1,11 +1,14 @@
 import React from 'react'
-
+import Updatatable from './Updatatable'
+// import Editfrom from './Editfrom'
 const App = () => {
+
   return (
     <div>
-      <h1>MONI</h1>
-      <h1>hello</h1>
-      <h1>good morningS</h1>
+      <h2>APPLICATION FROM</h2>
+      <Updatatable />
+      {/* <Editfrom /> */}
+
     </div>
   )
 }
