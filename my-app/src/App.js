@@ -13,13 +13,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Updatatable />} />
         <Route path="/newform" element={<Newform />} /> 
-        <Route path="/Editfrom" element={<Editfrom />} />  {/* Route for NewForm */}
+        <Route path="/Editfrom/:userid" element={<Editfrom />} /> {/* Route for NewForm */}
       </Routes>
     </Router>
-      {/* <Updatatable /> */}
-      {/* <Editfrom /> */}
-      {/* <Newform /> */}
-
+  
     </div>
   )
 }
