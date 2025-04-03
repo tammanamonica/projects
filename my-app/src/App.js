@@ -2,8 +2,7 @@ import React from 'react'
  import Updatatable from './Updatatable'
  import Newform from './Newform'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Editfrom from './Editfrom';
-
+import Editform from './Editform';
 const App = () => {
 
   return (
@@ -13,7 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Updatatable />} />
         <Route path="/newform" element={<Newform />} /> 
-        <Route path="/Editfrom/:userid" element={<Editfrom />} /> {/* Route for NewForm */}
+        <Route path="/Editform/:userid" element={<Editform />} /> {/* Route for NewForm */}
       </Routes>
     </Router>
   

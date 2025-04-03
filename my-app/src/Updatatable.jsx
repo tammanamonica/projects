@@ -81,7 +81,7 @@ const Updatatable = () => {
               <td><button className="btn btn-success" onClick={() => handleApprove(user)}>APPROVE</button></td>
               <td><button className="btn btn-danger" onClick={() => handleReject(user.userid)}>REJECT</button></td>
               {/* <td><button className="btn btn-warning" onClick={() => navigate(`/Editfrom/${user.userid}`)}>EDIT</button></td> */}
-              <td> <button className="btn btn-warning" onClick={() => navigate(`/Editfrom/${user.userid}`)}>EDIT</button></td>
+              <td> <button className="btn btn-warning" onClick={() => navigate(`/Editform/${user.userid}`)}>EDIT</button></td>
 
             </tr>
           ))}
