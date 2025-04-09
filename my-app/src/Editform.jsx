@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Editform.css";
 
 const Editform = () => {
-  const { id } = useParams(); // Get user ID from URL
+  const { _id } = useParams(); // Get user ID from URL
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -18,9 +18,9 @@ const Editform = () => {
 
   // Fetch existing user data for editing
   useEffect(() => {
-    console.log("Fetching user with ID:", id);
+    console.log("Fetching user with ID:", _id);
 
-    axios.get(`http://localhost:5000/users/${id}`)
+    axios.get(`http://localhost:5000/users/${_id}`)
       .then((response) => {
         if (response.data) {
           console.log("User data fetched:", response.data);
@@ -49,7 +49,7 @@ const Editform = () => {
     try {
       console.log("Updating user:", formData);
 
-      const response = await axios.put(`http://localhost:5000/users/${id}`, formData, {
+      const response = await axios.put(`http://localhost:5000/users/${_id}`, formData, {
         headers: { "Content-Type": "application/json" },
       });
 

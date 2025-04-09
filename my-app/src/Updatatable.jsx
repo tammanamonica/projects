@@ -7,6 +7,7 @@ import "./Updatatable.css";
 const Updatatable = () => {
   const [users, setUsers] = useState([]);
   const [approvedUsers, setApprovedUsers] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
 
   // Fetch Users Data
@@ -21,7 +22,7 @@ const Updatatable = () => {
 
   useEffect(() => {
     getUsersData();
-  }, []);
+  }, [refresh]);
 
   // Add User
   const handleAdd = () => {
@@ -29,12 +30,15 @@ const Updatatable = () => {
   };
 
   // Reject User (Delete)
-  const handleReject = async (id) => {
+  const handleReject = async (_id) => {
     const isConfirmed = window.confirm("Are you sure you want to reject this user?");
     if (isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/users/${id}`);
-        setUsers(users.filter((user) => user.userid !== id));
+        const response = await axios.delete(`http://localhost:5000/users/${_id}`);
+        setRefresh((prev) => !prev)
+        console.log(response.data)
+        console.log("delete succesfull")
+        
       } catch (error) {
         console.error("Error deleting user:", error);
       }
@@ -79,7 +83,7 @@ const Updatatable = () => {
               <td>{user.phno}</td>
               <td>{user.score}</td>
               <td><button className="btn btn-success" onClick={() => handleApprove(user)}>APPROVE</button></td>
-              <td><button className="btn btn-danger" onClick={() => handleReject(user.userid)}>REJECT</button></td>
+              <td><button className="btn btn-danger" onClick={() => handleReject(user._id)}>REJECT</button></td>
               {/* <td><button className="btn btn-warning" onClick={() => navigate(`/Editfrom/${user.userid}`)}>EDIT</button></td> */}
               <td> <button className="btn btn-warning" onClick={() => navigate(`/Editform/${user.userid}`)}>EDIT</button></td>
 
